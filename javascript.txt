@@ -1,0 +1,185 @@
+    function initialize() {
+        $("#GetDirectionsPage").on("pageshow", function (e) {
+         var directionsDisplay = new google.maps.DirectionsRenderer();
+        var myhome = new google.maps.LatLng(39.037503, -94.585722);
+        var myOptions = {
+            zoom: 5,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: myhome
+        }
+         var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+        var weather = new google.maps.weather.WeatherLayer({
+            temperatureUnits: google.maps.weather.TemperatureUnit.DEGREE
+        });
+        directionsDisplay.setMap(map);
+        weather.setMap(map);
+        var cloud = new google.maps.weather.CloudLayer();
+        cloud.setMap(map);
+        directionsDisplay.setPanel(document.getElementById("directions"));
+        });
+    }
+
+    function calcRoute() {
+        
+        var selectedMode = $("#mode").val();
+        var start = $("#start").val();
+        var end = $("#end").val();
+            var directionsService = new google.maps.DirectionsService();
+
+        var request = {
+            origin: start,
+            destination: end,
+            travelMode: google.maps.DirectionsTravelMode[selectedMode]
+        };
+        directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+                $("#results").show();
+            }
+        });
+        
+    }
+
+$(document).ready(function () {
+        initialize();
+        $("#end").change(calcRoute);
+        $("#start").change(calcRoute);
+        $("#mode").change(calcRoute);
+    
+    $("#tweet").click(function () {
+    window.open("http://twitter.com/share?url=xxx", "tweet", "status=0,toolbar=0,width=400,height=200");
+
+});
+
+     $('#btnSubway').bind('click' ,chart);    
+     $('#register').bind('click' , register);
+    $('#login').bind('click' , login);
+    
+    //Open the database 
+    if(openDatabase){
+        db = openDatabase('Project' , '1.0' , 'first project' , 2 * 1024 * 1024);
+    }
+    //Alert the user to upgrade their browser
+    else {
+        alert('Databases not supported. Please get a proper browser');
+    }
+
+ 
+});    
+
+function register(){
+    //Our text field data
+    var loginName = $('#loginName').val();
+    var loc = $('#loc').val();
+    var loginPass = $('#loginPass').val();
+    
+    
+    //Check databases are supported
+    if(openDatabase){
+        //Open a database transaction
+        db.transaction(function(tx){
+            //Execute an SQL statement to create the table "tblDemo" 
+            //only if it doesn't already exist                
+            tx.executeSql('CREATE TABLE IF NOT EXISTS details ('
+                           + 'loginId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'
+                           + 'loginName VARCHAR(255),'
+                           + 'loginLoc VARCHAR(255),'
+                           + 'loginPass VARCHAR(255)'
+                           + ');',[],nullData,errorHandler);
+        });
+        
+        //Open a new transaction
+        db.transaction(function(tx){
+            //Exexute an INSERT with the name, age and favourite colour, 
+            //we set values outside the SQL string for added security and 
+            //to prevent SQL injections, the values are represented with "?"
+            tx.executeSql('INSERT INTO details ('
+                           + 'loginName, loginLoc, loginPass)'
+                           + 'VALUES (?, ?, ?);'
+                           ,[loginName,loc,loginPass],nullData,errorHandler);
+             document.getElementById("test").innerHTML=" Your registration was completed successfully. Please go to home and try to login !!";
+        });
+    }
+}
+
+/////
+///Get Data Function
+/////
+function login(userName){
+    var userName = $('#userName').val();
+    var userPass = $('#userPass').val();
+    //Create an empty results string
+    var strResults = '';
+    
+    //Open a new transaction
+    db.transaction(function(tx){
+        //Select a wildcard from the database
+        tx.executeSql('SELECT * FROM details WHERE loginName=? AND loginPass=?'
+                       ,[userName,userPass]
+                       //Callback function with transaction and 
+                       //results objects
+                       ,function(tx, final){
+                            //Count the results rows
+                            var rowsCount = final.rows.length; 
+                           if ( rowsCount == 0 )
+                            {
+                           document.getElementById("test1").innerHTML="Invalid User name/Password. Please check !!";
+                            } else {
+                            //Loop the rows
+                            for (var i = 0; i < rowsCount; i++){
+                                //Build a results string, notice the 
+                                //column names are called
+                                
+                                strResults += '<p>Hello <b> '
+                                              + final.rows.item(i).loginName
+                                + '</b>Your location is : <b> '
+                                              + final.rows.item(i).loginLoc
+                                                                                     + '</b></p>';
+                            
+                            }
+                            //Fill the results DIV 
+                            $('.final').html(strResults);
+                           document.location.href='#mainpage';
+                        }
+                      }
+                       ,errorHandler);
+    });
+}
+
+/////
+///Error Handler
+/////
+function errorHandler(transaction, error) {
+    //Log the error
+    console.log('Error: ' + error.message + ' (Code ' + error.code + ')');
+}
+
+/////
+///Null Data
+/////
+function nullData(){
+    //Can be used for callbacks etc
+}
+
+google.load('visualization', '1.0', {'packages':['corechart']});
+function chart() {
+
+        var info = new google.visualization.DataTable();
+        info.addColumn('string', 'Year');
+        info.addColumn('number', 'Orders');
+        info.addRows([
+          ["2013", 360],
+          ["2012", 310],
+          ["2011", 290],
+          ["2010", 240],
+          ["2009", 180]
+        ]);
+
+               var chartOptions = {'title':'Sales Graph in the recent few years',
+                       'width':300,
+                       'height':300};
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_diagram'));
+        chart.draw(info, chartOptions);
+      }

@@ -1,0 +1,258 @@
+<div data-role="page" id="homepage">
+    <div data-role="header">
+         <h1>Homepage</h1>
+
+    </div>
+    <div data-role="navbar" data-inline="true">
+        <ul>
+            <li><a href="homepage" data-icon="home">Home</a>
+            </li>
+            <li><a href="#ExistingUser" data-icon="Login">Login</a></li>
+            <li><a href="#CustomerRegistration" data-icon="arrow-r">Customer Registration</a>
+            </li>
+            <li><a href="VendorRegistration" data-icon="arrow-r">Vendor Registration</a>
+
+            </li>
+        </ul>
+        
+            
+    </div>
+
+    <div data-role="content">
+         <h1><font color="white">Voila !</font></h1>
+
+         <h2><a href="#mainpage" data-transition="fade"><font color="blue">Plan Your Event</font></a></h2>
+
+    </div>
+</div>
+<div data-role="page" id="mainpage" data-theme="b">
+    <div data-role="header"> <a href="#homepage" data-role="button">Home</a>
+<a href="#" data-role="button">Search</a>
+    <h1>Make your choice</h1>
+    </div>
+    <div data-role="content">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<a href="http://www.facebook.com/share.php?u=http://www.bbc.co.uk/" onclick="return fbsclick()" target="_blank"> <img src= "http://s11.postimg.org/3komqlavj/facebook_like.gif" alt="" /></a>
+        
+         <h2> Welcome User</h2>
+           <div class="final"></div>
+        <p>Plan out your event by opting for the services which best suite your event. Book a wedding hall, look for theme based event decorators, live music and discover more !</p>
+ <div data-role="content" data-theme="b"> <a href="#restaurant" data-role="button">Restaurant</a>
+ <a href="#liveevent" data-role="button">Live Event</a>
+ <a href="#themedecorators" data-role="button">Theme Decorators</a>
+ <a href="#foodservices" data-role="button">Food Services</a>
+ <a href="#photograhy" data-role="button">Photography</a>
+ <a href="#Maps" data-role="button">Google Maps & Weather</a>
+
+        </div> <a href="#homepage">Go to Home Page</a>
+
+    </div>
+    <div data-role="footer" data-theme="e">
+         <h1>Footer Text</h1>
+
+    </div>
+</div>
+
+<!-- customer registration page-->
+
+<div data-role="page" id="CustomerRegistration">
+<div data-role="header"> <a href="#homepage" data-role="button">Home</a>
+         <h1>Registration Page</h1>
+<a href="#" data-role="button">Search</a>
+    </div>
+     <div data-role="content">
+<input type="text" id="loginName" placeholder="Enter Your Name" />
+
+<input type="text" id="loc" placeholder="Enter Your Location" />
+
+<input type="password" id="loginPass" placeholder="Enter Your Password" />
+
+<input type="submit" value="Register" id="register" />
+         <div id="test"></div>
+    </div>
+    
+    <div data-role="footer" data-theme="e">
+         <h1>Footer Text</h1>
+
+    </div>
+</div>
+
+<!--  -->
+
+<div data-role="page" id="restaurant">
+    <div data-role="header"> <a href="#homepage" data-role="button">Home</a>
+
+         <h1>Restaurant Page</h1>
+ <a href="#" data-role="button">Search</a>
+    </div>
+    
+    <div data-role="navbar">
+        <ul>
+            <li>
+        <script>
+  (function() {
+    var cx = '002135681717197534608:slwqjmwbv7w';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+            </li>
+            </ul>
+        </div>
+        
+    
+    <div data-role="content">
+        <h1>Pick Your Restaurant</h1>
+        
+<a href="#" data-role="button" data-theme="e" >P.F Chang's</a>
+            <a href="#" data-role="button" data-theme="e" >Masalas</a>
+        <a href="#" data-role="button" data-theme="e" >Pizza Hut</a>
+        <a href="#Chi" data-role="button" data-theme="e" >Chiptole</a>
+        <a href="#Subway" data-role="button" data-theme="e" >Subway</a>
+             
+         </div>
+   
+    <div data-role="footer">
+         <h1>All Rights Reserved</h1>
+
+    </div>
+</div>
+    
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&amp;libraries=weather"></script>
+<script type="text/javascript" src="js/jtwitter.js"></script>
+<div data-role="page" id="Maps">
+    <div data-role="header"> <a data-rel="back" data-icon="home">Home</a>
+
+         <h1>Map & Weather Forecast</h1>
+
+    </div>
+    <div data-role="content">
+        <p><a href="#GetDirectionsPage" data-role="button"> Google Maps Service - Directions and weather</a>
+
+        </p>
+        <div data-role="controlgroup" data-type="horizontal"> <a href="#" data-role="button" data-rel="back" data-icon="back">Go Back</a>
+
+        </div>
+    </div>
+</div>
+<div data-role="page" id="GetDirectionsPage">
+    <div data-role="header"> <a data-rel="back" data-icon="home">Home</a>
+
+         <h1>Route Map & Weather Forecast</h1>
+
+    </div>
+    <div data-role="content" id="GetDirectionsPage">
+        <div data-role="controlgroup" data-type="horizontal"> <a href="#" data-role="button" data-rel="back" data-icon="back">Go Back</a>
+
+        </div>
+    </div>
+    <div id="panel"> <b>Start: </b>
+
+        <select id="start" onchange="calcRoute();">
+            <option value="oasis, kc">Oasis</option>
+            <option value="st louis, mo">St Louis</option>
+            <option value="joplin, mo">Joplin, MO</option>
+            <option value="oklahoma city, ok">Oklahoma City</option>
+            <option value="plaza, mo">Plaza, Kansas</option>
+            <option value="amarillo, tx">Amarillo</option>
+            <option value="gallup, nm">Gallup, NM</option>
+            <option value="flagstaff, az">Flagstaff, AZ</option>
+            <option value="winona, az">Winona</option>
+            <option value="kingman, az">Kingman</option>
+            <option value="barstow, ca">Barstow</option>
+            <option value="san bernardino, ca">San Bernardino</option>
+            <option value="los angeles, ca">Los Angeles</option>
+        </select> <b>End: </b>
+
+        <select id="end">
+            <option value="st louis, mo">St Louis</option>
+            <option value="chicago, il">Chicago</option>
+            <option value="joplin, mo">Joplin, MO</option>
+            <option value="oklahoma city, ok">Oklahoma City</option>
+            <option value="amarillo, tx">Amarillo</option>
+            <option value="gallup, nm">Gallup, NM</option>
+            <option value="flagstaff, az">Flagstaff, AZ</option>
+            <option value="winona, az">Winona</option>
+            <option value="kingman, az">Kingman</option>
+            <option value="barstow, ca">Barstow</option>
+            <option value="san bernardino, ca">San Bernardino</option>
+            <option value="los angeles, ca">Los Angeles</option>
+        </select> <b>Transportation Mode: </b>
+
+        <select id="mode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+        </select>
+    </div>
+    <div data-role="content" id="map_canvas"></div>
+    <div id="results" style="display:none;">
+        <div id="directions"></div>
+    </div>
+</div>
+
+
+<!-- 
+//////
+Newly added code 
+/////!-->
+
+<div data-role="page" id="ExistingUser">
+<div data-role="header"> <a href="#homepage" data-role="button">Home</a>
+<h1>Plan Your Event</h1>
+<a href="#" data-role="button">Search</a>
+</div>
+  
+
+<div data-role="content">
+<input type="text" id="userName" placeholder="Enter user name" />
+<input type="password" id="userPass" placeholder="Enter user password" />
+<input type="submit" value="Login" id="login" />
+<div id="test1"></div>
+   
+</div>
+
+<div data-role="footer" data-position="fixed">
+<h1>All Rights Reserved</h1>
+</div>
+</div> 
+
+
+    
+    
+<script type="text/javascript" src="https://www.google.com/jsapi">
+</script>
+<div data-role="page" id="Subway">
+  <div data-role="header" data-position="fixed">
+      <h1>Subway</h1>
+    <a href="#mainpage" data-role="button" data-icon="home">Home</a>
+<a href="#search" data-role="button" data-icon="search">Search</a>
+
+    
+      </div>
+    <div data-role="content">
+    <h1>The History of Subway</h1>
+<h2>The Seventeen-Year-Old Entrepreneur</h2>    
+        <p> <strong>Back in 1965, Fred DeLuca set out to fulfill his dream of becoming a medical doctor. Searching for a way to help pay for his education, a family friend suggested he open a submarine sandwich shop.</strong></p> 
+<p><strong>With a loan of $1,000, the friend—Dr. Peter Buck—offered to become Fred’s partner, and a business relationship was forged that would change the landscape of the fast food industry.
+    The first store was opened in Bridgeport, Connecticut in August, 1965. Then, they set a goal of having 32 stores opened in 10 years. Fred soon learned the basics of running a business, as well as the importance of serving a well-made, high quality product, providing excellent customer service, keeping operating costs low and finding great locations. These early lessons continue to serve as the foundation for successful SUBWAY® restaurants around the world.</strong></p>
+        
+<input type="submit" value="Click her to look at our business over the past few years" id="btnSubway" data-theme="e"/>
+
+<div id="chart_diagram"></div>
+    
+    </div>
+<div data-role="footer" data-position="fixed">
+<h1>All Rights Reserved</h1>
+</div>
+    </div>
+    
+    
